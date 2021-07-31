@@ -37,6 +37,7 @@ campsiteRouter.route('/')
             .catch(err => next(err));
     });
 
+//routing for paths with a campsite id
 campsiteRouter.route('/:campsiteId')
     .get((req, res, next) => {
         Campsite.findById(req.params.campsiteId)
@@ -211,6 +212,7 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
                 }
             })
             .catch(err => next(err));
+
     });
 
 module.exports = campsiteRouter;
