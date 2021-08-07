@@ -170,9 +170,9 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
     .put(authenticate.verifyUser, (req, res, next) => {
         Campsite.findById(req.params.campsiteId)
             .then(campsite => {
-                const currentUserId=req.user._id;
-                const commentAuthorId=campsite.comments.id(req.params.commentId)?.author._id;
-                 if (campsite?.comments.id(req.params.commentId) 
+                const currentUserId = req.user._id;
+                const commentAuthorId = campsite.comments.id(req.params.commentId)?.author._id;
+                if (campsite?.comments.id(req.params.commentId)
                     && commentAuthorId.equals(currentUserId)) {
                     if (req.body.rating) {
                         campsite.comments.id(req.params.commentId).rating = req.body.rating;
@@ -202,9 +202,9 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
     .delete(authenticate.verifyUser, (req, res, next) => {
         Campsite.findById(req.params.campsiteId)
             .then(campsite => {
-                const currentUserId=req.user._id;
-                const commentAuthorId=campsite.comments.id(req.params.commentId).author._id;
-                if (campsite?.comments.id(req.params.commentId) 
+                const currentUserId = req.user._id;
+                const commentAuthorId = campsite.comments.id(req.params.commentId).author._id;
+                if (campsite?.comments.id(req.params.commentId)
                     && commentAuthorId.equals(currentUserId)) {
                     campsite.comments.id(req.params.commentId).remove();
                     campsite.save()
